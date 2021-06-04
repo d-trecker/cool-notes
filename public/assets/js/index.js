@@ -182,9 +182,3 @@ if (window.location.pathname === '/notes') {
 
 getAndRenderNotes();
 
-// module.exports = {
-//   // filterByQuery,
-//   // findById,
-//   // createNewAnimal,
-//   // validateAnimal
-// };

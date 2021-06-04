@@ -3,7 +3,7 @@ const app = express();
 const fs = require('fs');
 const path = require('path');
 const PORT = process.env.PORT || 3001;
-const notes = require("./db/db.json");
+const savedNotes = require("./db/notes.json");
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
@@ -18,8 +18,12 @@ app.get('/notes', (req, res) => {
 });
 
 
+app.get('/api/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, "/db/notes.json"));
+});
+
 // app.get('/api/db', (req, res) => {
-//     res.json(notes);
+//     res.json(savedNotes);
 // });
 
 app.listen(3001, () => {

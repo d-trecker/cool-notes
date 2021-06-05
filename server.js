@@ -29,9 +29,11 @@ app.get('/api/notes', (req, res) => {
 //     res.json(savedNotes);
 // });
 
+//Post request to add notes.
 app.post('/api/notes', (req, res) => {
     const writeNote = req.body;
     const savedNotes = JSON.parse(fs.readFileSync('./db/notes.json'));
+    //nanoid creates unique id to add to new note. 
     writeNote.id = nanoid(10);
     if (!req.body) {
         res.status(400).send('The note is not properly formatted')
@@ -41,6 +43,8 @@ app.post('/api/notes', (req, res) => {
     res.json(savedNotes);
     }
 });
+
+//Delete note request
 
 //Listen request
 app.listen(PORT, () => {

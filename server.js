@@ -1,9 +1,11 @@
+const { nanoid } = require('nanoid');
 const express =  require('express');
 const app = express();
 const fs = require('fs');
 const path = require('path');
 const PORT = process.env.PORT || 3001;
 const savedNotes = require("./db/notes.json");
+
 
 //middleware
 app.use(express.urlencoded({extended: true}));
@@ -27,7 +29,21 @@ app.get('/api/notes', (req, res) => {
 //     res.json(savedNotes);
 // });
 
+app.post('/api/notes', (req, res) => {
+    const writeNote = req.body;
+    const savedNotes = JSON.parse(fs.readFileSync('./db/notes.json'));
+    writeNote.id = nanoid(10);
+    if (!req.body) {
+        res.status(400).send('The note is not properly formatted')
+    } else {
+    savedNotes.push(writeNote);
+    fs.writeFileSync('./db/notes.json', JSON.stringify(savedNotes));
+    res.json(savedNotes);
+    }
+});
+
 //Listen request
 app.listen(PORT, () => {
     console.log(`API server is now on ${PORT}!`);
+    // console.log(nanoid(10));
 });

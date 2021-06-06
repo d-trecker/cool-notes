@@ -5,6 +5,7 @@ Student: Dylan Trecker</br>
 Description: A really cool note taker run by express.js and heroku (Also, used npm package nanoid).</br>
 Full Repository: https://github.com/d-trecker/cool-notes.git</br>
 Get the repository by: $ git clone git@github.com:d-trecker/cool-notes.git </br>
+Deployed on Heroku at: http://dt-cool-notes.herokuapp.com/</br>
 
 User Story</br>
 AS A small business owner
